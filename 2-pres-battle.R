@@ -1,7 +1,7 @@
 library(dplyr)
 library(ggplot2)
 
-cm <- readRDS("cn14.rds")
+cm <- readRDS("cm14.rds")
 pres_cm <- cm %.% filter(cmte_tp == "P")
 
 indiv <- readRDS("indiv12.rds")
