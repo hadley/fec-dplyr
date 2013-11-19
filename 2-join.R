@@ -17,4 +17,11 @@ table(table(cm_cn2$cand_id))
 
 # Look at individuals who contributed to candidates
 indiv <- readRDS("indiv12.rds")
-indiv_c <- inner_join(indiv, cm_cn2)
+indiv_c <- inner_join(indiv, cm_cn2, by = "cmte_id") %.% filter(cand_id != "")
+
+by_cand <- group_by(indiv_c, cand_id)
+totals <- by_cand %.% summarise(n = n(), amt = sum(transaction_amt)) %.% 
+  arrange(desc(amt))
+
+totals %.% left_join(cn %.% 
+  select(cand_id, cand_name, cand_office_st, cand_pty_affiliation))
