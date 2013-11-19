@@ -31,7 +31,7 @@ read <- list(
       "IMAGE_NUM", "TRANSACTION_TP", "ENTITY_TP", "NAME", "CITY", "STATE", 
       "ZIP_CODE", "EMPLOYER", "OCCUPATION", "TRANSACTION_DT", "TRANSACTION_AMT", 
       "OTHER_ID", "TRAN_ID", "FILE_NUM", "MEMO_CD", "MEMO_TEXT", "SUB_ID"))
-    df$transaction_dt <- mdy(df$transaction_dt)
+    df$transaction_dt <- as.Date(mdy(df$transaction_dt))
     df
   },
   "cn14.zip" = function(path) {
