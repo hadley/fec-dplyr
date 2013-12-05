@@ -18,7 +18,7 @@ cache <- function(zip_path, rds_path) {
   on.exit(unlink(unzipped))
 
   df <- read[[zip_path]](unzipped)
-  class(df) <- c("tbl_cpp", "tbl", class(df))
+  class(df) <- c("tbl_df", "tbl", class(df))
   saveRDS(df, rds_path)
 }
 
